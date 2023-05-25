@@ -1,0 +1,34 @@
+<div class="layout-column align-items-center justify-content-center">
+  <div class="card pb-8">
+    <table
+      [attr.data-test-id]="this.dataType === 'Song' ? 'song-table' : 'book-table'"
+    >
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Genre</th>
+        <th>Creator</th>
+        <ng-container *ngIf="dataType ==='Song'"><th>Time</th></ng-container>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of dataList; let idx = index;" id="list-item-{{idx}}">
+        <td data-test-id="item-name">{{item.name}}</td>
+        <td data-test-id="item-genre">{{item.genre}}</td>
+        <td data-test-id="item-creator">{{item.creator}}</td>
+        <ng-container *ngIf="dataType === 'Song'">
+          <td>
+            <div class="layout-row align-items-center">
+              <i class="play material-icons mr-4">play_circle_outline</i>
+              <span data-test-id="item-time"></span>
+            </div>
+            </td>
+        </ng-container>
+
+        <td><button class="icon-only mx-2" data-test-id="item-delete"><i class="delete material-icons"(click)=deleteItem(item)>delete</i></button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

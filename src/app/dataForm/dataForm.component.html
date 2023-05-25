@@ -1,0 +1,21 @@
+<div class="layout-row">
+  <section class="layout-column align-items-center justify-content-center">
+    <input type="text" data-test-id="app-input-name" required placeholder="Name"  [(ngModel)]="name" />
+    <input type="text" data-test-id="app-input-genre" required placeholder="Genre" [(ngModel)]="genre" />
+    <input type="text" data-test-id="app-input-creator" required placeholder="Creator"  [(ngModel)]="creator" />
+    <form >
+      <label><input class="radioButton" data-test-id="app-input-book-type" type="radio" name="type" value="Book"
+          [(ngModel)]="option" required>Book</label>
+      <label><input class="radioButton" data-test-id="app-input-song-type" type="radio" name="type" value="Song"
+          [(ngModel)]="option" required>Song</label>
+    </form>
+    <ng-container *ngIf="option === 'Song'">
+      <input data-test-id="app-input-time" type="number" placeholder="Total Time" [(ngModel)]="time" />
+    </ng-container>
+
+  </section>
+  <section class="layout-row justify-content-center align-items-center">
+    <button data-test-id="add-button" class="w-30"
+      (click)="addItem(name, genre, creator)">Add</button>
+  </section>
+</div>
